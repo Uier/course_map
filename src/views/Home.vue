@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container class="mt-6">
     <div class="d-flex flex-column">
       <div class="d-flex justify-center">
         <v-hover v-slot:default="{ hover }">
