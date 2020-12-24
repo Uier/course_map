@@ -32,7 +32,7 @@ export default {
     headerItems() {
       return [
         {
-          label: '探索課程',
+          label: '檢索課程',
           route: { name: 'courses' },
         },
         {
