@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d2308ce"],{ed81:function(t,e,n){"use strict";n.r(e);var s=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("v-container",{staticClass:"mt-6"},[n("div",{staticClass:"text-h1"},[t._v("找別人ㄉ地圖")])])},a=[],c={name:"Users"},l=c,i=n("2877"),r=Object(i["a"])(l,s,a,!1,null,null,null);e["default"]=r.exports}}]);
+//# sourceMappingURL=chunk-2d2308ce.95f6be9a.js.map

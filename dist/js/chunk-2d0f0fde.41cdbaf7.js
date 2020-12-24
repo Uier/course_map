@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0f0fde"],{"9f72":function(t,e,n){"use strict";n.r(e);var s=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("v-container",{staticClass:"mt-6"},[n("div",{staticClass:"text-h1"},[t._v("看課程資訊")])])},a=[],c={name:"Course"},l=c,u=n("2877"),i=Object(u["a"])(l,s,a,!1,null,null,null);e["default"]=i.exports}}]);
+//# sourceMappingURL=chunk-2d0f0fde.41cdbaf7.js.map
