@@ -9,24 +9,26 @@
       lg="3"
       xl="2"
     >
-      <v-card class="pa-4 ma-4">
-        <div class="d-flex">
-          <!-- User img and name -->
-          <div class="d-flex flex-column align-center justify-space-between">
-            <v-avatar color="primary" class="white--text">{{ avatar }}</v-avatar>
-            <div class="mt-2 text-body-1">{{ user }}</div>
+      <v-hover v-slot:default="{ hover }">
+        <v-card class="pa-4 ma-4" :elevation="hover ? 6 : 2" @click="handleClick(id)">
+          <div class="d-flex">
+            <!-- User img and name -->
+            <div class="d-flex flex-column align-center justify-space-between">
+              <v-avatar color="primary" class="white--text">{{ avatar }}</v-avatar>
+              <div class="mt-2 text-body-1">{{ user }}</div>
+            </div>
+            <!-- User course info -->
+            <div class="d-flex flex-column align-start ml-8">
+              <div
+                v-for="tag in tags"
+                :key="tag"
+                class="text-body-1"
+              ># {{ tag }}</div>
+              <div class="text-body-1">{{ tags[0] }} 課程數： {{ occurence }}</div>
+            </div>
           </div>
-          <!-- User course info -->
-          <div class="d-flex flex-column align-start ml-8">
-            <div
-              v-for="tag in tags"
-              :key="tag"
-              class="text-body-1"
-            ># {{ tag }}</div>
-            <div class="text-body-1">{{ tags[0] }} 課程數： {{ occurence }}</div>
-          </div>
-        </div>
-      </v-card>
+        </v-card>
+      </v-hover>
     </v-col>
   </v-row>
 </template>
@@ -125,9 +127,11 @@ export default {
   data: () => ({
     fake,
   }),
+
+  methods: {
+    handleClick() {
+
+    },
+  },
 }
 </script>
-
-<style>
-
-</style>
