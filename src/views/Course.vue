@@ -7,8 +7,8 @@
           <div class="text-h5">課程資訊</div>
           <v-spacer />
           <!-- Like Button -->
-          <v-btn :color="hasLiked ? 'secondary' : 'default'" @click="hasLiked = !hasLiked" outlined>
-            <v-icon>{{ hasLiked ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
+          <v-btn :color="hasLiked ? 'secondary' : 'default'" @click="hasLiked = !hasLiked" outlined small>
+            <v-icon small>{{ hasLiked ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
             {{ hasLiked ? '已收藏' : '收藏' }}
           </v-btn>
         </v-row>
@@ -33,6 +33,35 @@
       <!-- Course Discussion -->
       <v-col cols="12" md="6">
         <div class="text-h5">評價討論區</div>
+
+        <!-- Filter by Text -->
+        <v-text-field
+          v-model="searchText"
+          class="mt-4"
+          label="快速搜尋"
+          outlined
+          hide-details
+          append-icon="mdi-magnify"
+          single-line
+          dense
+        />
+
+        <!-- Filter by Tags -->
+        <v-btn
+          v-for="(tag, index) in info.discussion.tags"
+          :key="tag"
+          class="ml-2 mt-2"
+          tile
+          depressed
+          color="primary"
+          :outlined="!check[index]"
+          @click="$set(check, index, !check[index])"
+        >
+          <v-icon v-show="check[index]">mdi-check</v-icon>
+          {{ tag }}
+        </v-btn>
+
+        <CourseDiscussion :data="info.discussion.posts" />
       </v-col>
     </v-row>
   </v-container>
@@ -40,11 +69,12 @@
 
 <script>
 import CourseCard from '@/components/CourseCard'
+import CourseDiscussion from '@/components/CourseDiscussion'
 
 export default {
   name: 'Course',
 
-  components: { CourseCard },
+  components: { CourseCard, CourseDiscussion },
 
   props: {
     info: {
@@ -78,13 +108,38 @@ export default {
             tags: ['程式設計', 'C++'],
           },
         ],
+        discussion: {
+          tags: ['問題', '評分', '教學風格', '心得', '考試'],
+          posts: [
+            {
+              id: 1,
+              avatar: '陳',
+              author: '陳式',
+              time: '2020/12/12',
+              tags: ['問題'],
+              content: '這堂課可以加簽嗎？',
+              replies: [
+                {
+                  id: 2,
+                  avatar: '夜',
+                  author: '童熬夜',
+                  time: '2020/12/13',
+                  content: '應該可以',
+                },
+              ],
+            }
+          ],
+        },
       }),
     },
   },
 
-  data: () => ({
-    hasLiked: false,
-  }),
+  data () {
+    return {
+      hasLiked: false,
+      check: this.info.discussion.tags.map(() => false),
+    }
+  },
 }
 </script>
 
