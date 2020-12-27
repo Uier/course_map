@@ -33,8 +33,8 @@ export default {
   },
 
   methods: {
-    handleClick() {
-
+    handleClick(id) {
+      this.$router.push({ name: 'course', params: { id } })
     },
   },
 }

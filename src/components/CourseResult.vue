@@ -19,7 +19,7 @@ const headers = [
   { text: '教師', value: 'teacher' },
   { text: '系所', value: 'depart' },
   { text: '時間', value: 'time' },
-  { text: '地點', value: 'location' },
+  { text: '地點', value: 'campus' },
   { text: '學分', value: 'credit' },
   { text: '標籤', value: 'tags' },
   { text: '評價數', value: 'comment' },

@@ -1,31 +1,9 @@
 <template>
   <v-container class="mt-6">
-    <v-row>
+    <v-row v-if="info">
       <!-- Course Info -->
       <v-col cols="12" md="6">
-        <v-row>
-          <div class="text-h5">課程資訊</div>
-          <v-spacer />
-          <!-- Like Button -->
-          <v-btn :color="hasLiked ? 'secondary' : 'default'" @click="hasLiked = !hasLiked" outlined small>
-            <v-icon small>{{ hasLiked ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
-            {{ hasLiked ? '已收藏' : '收藏' }}
-          </v-btn>
-        </v-row>
-
-        <ul class="mt-4">
-          <li class="mt-2">課名：{{ info.name }}</li>
-          <li class="mt-2">學期：{{ info.semester }}</li>
-          <li class="mt-2">授課教師：{{ info.teacher }}</li>
-          <li class="mt-2">開課系所：{{ info.department }}</li>
-          <li class="mt-2">上課時間：{{ info.time }}</li>
-          <li class="mt-2">上課地點：{{ info.location }}</li>
-          <li class="mt-2">學分數：{{ info.credit }}</li>
-          <li class="mt-2">標籤：{{ info.tags.join('、') }}</li>
-          <li class="mt-2">課程內容：{{ info.description }}</li>
-          <li class="mt-2">評分方式：{{ info.grade }}</li>
-          <li class="mt-2">推薦：</li>
-        </ul>
+        <CourseInfo :info="info" />
 
         <CourseCard :data="info.recommendCourses" />
       </v-col>
@@ -52,6 +30,7 @@
           :key="tag"
           class="ml-2 mt-2"
           tile
+          small
           depressed
           color="primary"
           :outlined="!check[index]"
@@ -68,81 +47,29 @@
 </template>
 
 <script>
+import CourseInfo from '@/components/CourseInfo'
 import CourseCard from '@/components/CourseCard'
 import CourseDiscussion from '@/components/CourseDiscussion'
+import { courses } from '@/data/courses'
 
 export default {
   name: 'Course',
 
-  components: { CourseCard, CourseDiscussion },
+  components: { CourseInfo, CourseCard, CourseDiscussion },
 
-  props: {
-    info: {
-      type: Object,
-      default: () => ({
-        id: 1,
-        name: '程式設計一',
-        semester: '110-1',
-        teacher: '劉白天',
-        department: '資管系',
-        time: '三 AB',
-        location: '師大圖書館校區教學大樓 401',
-        credit: '2',
-        tags: ['程式設計', 'C'],
-        description: '行野華何……個民樣到地來其或少華情了形！布北中黃地士進軍一色者電。還積南參直理育是二上表代答這空坡論出際在法大顯給論麼展那長目令何少中素；認三其了地能了確生法感在個到或，童能照及一著領國雙對了一廣沒活代說下一，一變議，來資一賽性？是類向沒孩的：夫藥性會質覺，不國重委重。程模以次向現唱又，後親教甚這兒生世經道去交只對智我輪兩議；驚家樣流就多西部反一爭使政友不由人道包機散。經是實主產光處，科第意；假失問處了！向正帶景。草加兒安結老子來它直公做能有管言葉的組山。他速都趣化點者山不眾樂變的問所這少情分見友於來，期草他包因利小客到平解本寶財覺條工生。環漸大般世入，告程一千是是賣和重何間但想星子為得求個。人不去打方直會……不就時子人們不山間口過心；精兒時落優客覺可認刻只文不過散了國始管看股施金、心工公此！不型來那通？心讀必最朋回明動中，消學燈整而邊位是個個他，遠不果邊同自沒來年者國活們市樓張才？',
-        grade: '行野華何……個民樣到地來其或少華情了形！布北中黃地士進軍一色者電。還積南參直理育是二上表代答這空坡論出際在法大顯給論麼展那長目令何少中素；認三其了地能了確生法感在個到或，童能照及一著領國雙對了一廣沒活代說下一，一變議，來資一賽性？是類向沒孩的：夫藥性會質覺，不國重委重。程模以次向現唱又，後親教甚這兒生世經道去交只對智我輪兩議；驚家樣流就多西部反一爭使政友不由人道包機散。經是實主產光處，科第意；假失問處了！向正帶景。草加兒安結老子來它直公做能有管言葉的組山。他速都趣化點者山不眾樂變的問所這少情分見友於來，期草他包因利小客到平解本寶財覺條工生。環漸大般世入，告程一千是是賣和重何間但想星子為得求個。人不去打方直會……不就時子人們不山間口過心；精兒時落優客覺可認刻只文不過散了國始管看股施金、心工公此！不型來那通？心讀必最朋回明動中，消學燈整而邊位是個個他，遠不果邊同自沒來年者國活們市樓張才？',
-        recommendCourses: [
-          {
-            id: 2,
-            name: '程式設計入門',
-            tags: ['程式設計', 'Java'],
-          },
-          {
-            id: 3,
-            name: 'C 語言從入門到放棄',
-            tags: ['程式設計', 'C'],
-          },
-          {
-            id: 4,
-            name: '進階程式設計',
-            tags: ['程式設計', 'C++'],
-          },
-        ],
-        discussion: {
-          tags: ['問題', '評分', '教學風格', '心得', '考試'],
-          posts: [
-            {
-              id: 1,
-              avatar: '陳',
-              author: '陳式',
-              time: '2020/12/12',
-              tags: ['問題'],
-              content: '這堂課可以加簽嗎？',
-              replies: [
-                {
-                  id: 2,
-                  avatar: '夜',
-                  author: '童熬夜',
-                  time: '2020/12/13',
-                  content: '應該可以',
-                },
-              ],
-            }
-          ],
-        },
-      }),
+  computed: {
+    info() {
+      return this.$route.params.id ? courses[`${this.$route.params.id}`] : null
     },
   },
 
-  data () {
+  data() {
     return {
-      hasLiked: false,
-      check: this.info.discussion.tags.map(() => false),
+      check: [false, false, false, false, false],
+      searchText: '',
     }
   },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

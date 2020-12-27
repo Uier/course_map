@@ -5,7 +5,15 @@
 
     <v-row>
       <!-- Table -->
-      <v-icon size="500">mdi-table</v-icon>
+      <v-col cols="6">
+        <ScheduleSelector
+          :minTime="minTime"
+          :maxTime="maxTime"
+          :numDays="numDays"
+          :selection="schedule"
+          @onChange="handleDateChange"
+        />
+      </v-col>
 
       <v-spacer />
 
@@ -42,10 +50,24 @@
             <v-select label="選擇學校" v-model="school" :items="schools" outlined dense multiple />
           </v-col>
           <v-col cols="4">
-            <v-select label="選擇學院" v-model="college" :items="colleges" outlined dense multiple />
+            <v-select
+              label="選擇學院"
+              v-model="college"
+              :items="colleges"
+              outlined
+              dense
+              multiple
+            />
           </v-col>
           <v-col cols="4">
-            <v-select label="選擇系所" v-model="depart" :items="departs" outlined dense multiple />
+            <v-select
+              label="選擇系所"
+              v-model="department"
+              :items="departments"
+              outlined
+              dense
+              multiple
+            />
           </v-col>
         </v-row>
 
@@ -75,26 +97,25 @@
 
 <script>
 import CourseResult from '@/components/CourseResult'
+import ScheduleSelector from 'vue-schedule-selector'
+import { campuses, tags, departments } from '@/data/config'
 
 const years = ['109', '108', '107', '106', '105', '104', '103', '102', '101', '100', '99', '98']
 const semesters = ['1', '2', '3']
 const schools = ['臺大', '臺師大', '臺科大']
 const colleges = ['選項一', '選項二', '選項三']
-const departs = ['資工系', '電機系', '電子系', '機械系', '科技系', '學習科學學士學位學程']
-const campuses = ['臺大總區', '臺大醫學院校區', '師大分部', '師大本部', '師大圖書館校區', '臺科大']
-const tags = ['程式設計', '數學', '圖學', '網路', '網頁', '電路', 'C', 'C++', 'Python']
 
 export default {
   name: 'Courses',
 
-  components: { CourseResult },
+  components: { CourseResult, ScheduleSelector },
 
   data: () => ({
     years,
     semesters,
     schools,
     colleges,
-    departs,
+    departments,
     campuses,
     tags,
     searchText: '',
@@ -102,10 +123,20 @@ export default {
     semester: '1',
     school: [],
     college: [],
-    depart: [],
+    department: [],
     campus: [],
     tag: [],
     data: [],
+    minTime: 8,
+    maxTime: 21,
+    numDays: 5,
+    schedule: [],
   }),
+
+  methods: {
+    handleDateChange(newSchedule) {
+      this.schedule = newSchedule
+    },
+  },
 }
 </script>

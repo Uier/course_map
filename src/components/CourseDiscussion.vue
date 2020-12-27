@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row no-gutters v-for="{id, author, time, tags, content, replies} in data" :key="id">
+    <v-row no-gutters v-for="{id, avatar, author, time, tags, content, replies} in data" :key="id">
       <v-card class="pa-4 ma-4" width="100%">
         <div class="d-flex flex-column">
           <div class="d-flex align-center">
@@ -10,14 +10,14 @@
             <div class="text-body-1">{{ time }}</div>          
           </div>
           <div class="d-flex mt-4">
-            <v-chip class="rounded-0" label color="primary" v-for="tag in tags" :key="tag">{{ tag }}</v-chip>
+            <v-chip class="rounded-0" small label color="primary" v-for="tag in tags" :key="tag">{{ tag }}</v-chip>
           </div>
           <div class="d-flex my-4">
             <div class="pl-4">{{ content }} </div>
           </div>
           <v-divider class="my-2" />
           <v-btn color="primary" outlined>
-            留言（{{replies.length}}）
+            留言（{{ replies.length }}）
           </v-btn>
         </div>
       </v-card>
