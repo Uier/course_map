@@ -7,6 +7,4 @@ cd dist
 git init
 git add -A
 git commit -m 'deploy'
-git push -f https://github.com/Uier/course_map master:gh-pages
-
-cd -
+git push -f origin master:gh-pages
