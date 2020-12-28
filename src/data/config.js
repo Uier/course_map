@@ -1,16 +1,9 @@
-import { courses } from './courses'
+import { courseList } from './courses'
 
-export const years = [...new Set(courses.map(c => c.semester).reduce((a, b) => [...a, ...b], []))]
+export const semesters = [...new Set(courseList.map(c => c.semester))].sort()
 
-export const campuses = [
-  '臺大總區',
-  '臺大醫學院校區',
-  '師大分部',
-  '師大本部',
-  '師大圖書館校區',
-  '臺科大',
-]
+export const campuses = [...new Set(courseList.map(c => c.location))].sort()
 
-export const tags = [...new Set(courses.map(c => c.tags).reduce((a, b) => [...a, ...b], []))]
+export const tags = [...new Set(courseList.map(c => c.tags).reduce((a, b) => [...a, ...b], []))].sort()
 
-export const departments = [...new Set(courses.map(c => c.department))]
+export const departments = [...new Set(courseList.map(c => c.department))].sort()

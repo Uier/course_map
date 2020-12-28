@@ -26,7 +26,7 @@
 
         <!-- Filter by Tags -->
         <v-btn
-          v-for="(tag, index) in info.discussion.tags"
+          v-for="(tag, index) in ['問題', '心得', '評價', '風格', '其他']"
           :key="tag"
           class="ml-2 mt-2"
           tile
@@ -40,7 +40,7 @@
           {{ tag }}
         </v-btn>
 
-        <CourseDiscussion :data="info.discussion.posts" />
+        <!-- <CourseDiscussion :data="info.discussion.posts" /> -->
       </v-col>
     </v-row>
   </v-container>
@@ -49,13 +49,13 @@
 <script>
 import CourseInfo from '@/components/CourseInfo'
 import CourseCard from '@/components/CourseCard'
-import CourseDiscussion from '@/components/CourseDiscussion'
+// import CourseDiscussion from '@/components/CourseDiscussion'
 import { courses } from '@/data/courses'
 
 export default {
   name: 'Course',
 
-  components: { CourseInfo, CourseCard, CourseDiscussion },
+  components: { CourseInfo, CourseCard },
 
   computed: {
     info() {

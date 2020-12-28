@@ -41,7 +41,7 @@ export default {
         },
         {
           label: '個人頁面',
-          route: { name: 'user', params: { id: 0 } },
+          route: { name: 'user', params: { id: 1 } },
         },
       ]
     },

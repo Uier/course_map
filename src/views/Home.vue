@@ -45,7 +45,7 @@
             class="px-4 py-10 mt-15 mx-3"
             :elevation="hover ? 6 : 2"
             width="500"
-            @click="clickCard({ name: 'user', params: { id: 0 } })"
+            @click="clickCard({ name: 'user', params: { id: 1 } })"
           >
             <div class="d-flex justify-center flex-wrap">
               <div class="d-flex justify-center align-center">
@@ -70,7 +70,7 @@ export default {
   methods: {
     clickCard(route) {
       this.$router.push(route)
-    }
-  }
+    },
+  },
 }
 </script>

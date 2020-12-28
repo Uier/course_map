@@ -20,18 +20,14 @@
         </v-btn>
       </v-col>
       <v-col cols="4">
-        <v-checkbox
-          class="pt-2 mt-0"
-          v-model="checkbox"
-          label="顯示與我關聯性高的地圖"
-        />
+        <v-checkbox class="pt-2 mt-0" v-model="checkbox" label="顯示與我關聯性高的地圖" />
       </v-col>
     </v-row>
 
     <v-divider class="my-4" />
 
     <v-row>
-      <UserResult :data="data" />
+      <UserResult :data="userList" />
     </v-row>
 
     <br v-for="i in 10" :key="i" />
@@ -40,6 +36,7 @@
 
 <script>
 import UserResult from '@/components/UserResult'
+import { userList } from '@/data/users'
 
 export default {
   name: 'Users',
@@ -47,12 +44,11 @@ export default {
   components: { UserResult },
 
   data: () => ({
+    userList,
     searchText: '',
     checkbox: false,
   }),
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

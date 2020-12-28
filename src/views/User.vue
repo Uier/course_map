@@ -30,7 +30,7 @@
             收藏課程
           </v-card-title>
           <v-card-text class="text--primary">
-            <div v-for="c in ['資料結構', '生活中的演算法', '假資料']" :key="c">
+            <div v-for="c in ['未完成', '的功能', '假資料']" :key="c">
               <ul>
                 <li>
                   <a>{{ c }}</a>
@@ -74,7 +74,9 @@
               <div v-for="c in coursesValue.filter(c => c.tags.includes(selectedTag))" :key="c.id">
                 <ul>
                   <li>
-                    <a>{{ c.name }}</a>
+                    <router-link :to="{ name: 'course', params: { id: c.id } }">{{
+                      c.name
+                    }}</router-link>
                   </li>
                 </ul>
               </div>
