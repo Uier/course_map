@@ -15,7 +15,7 @@
                 <ul>
                   <li>臺師大</li>
                   <li>{{ info.department }}</li>
-                  <li>標籤：{{ tags.join('、') }}</li>
+                  <li>標籤：{{ tags.slice(0, 3).join('、') }}</li>
                   <li>目前修課數：{{ info.courses.length }}</li>
                 </ul>
               </div>
@@ -125,7 +125,7 @@ export default {
       const cids = this.info.courses
       return [
         ...new Set(cids.map(cid => courses[`${cid}`].tags).reduce((a, b) => [...a, ...b], [])),
-      ].slice(0, 3)
+      ]
     },
     tagNodes() {
       return this.tags.map(tag => ({
@@ -179,12 +179,12 @@ export default {
         interaction: {
           hover: true,
           hoverConnectedEdges: false,
-          dragNodes: false,
-          dragView: false,
-          zoomView: false,
+          // dragNodes: false,
+          // dragView: false,
+          // zoomView: false,
         },
         layout: {
-          randomSeed: 1,
+          // randomSeed: 1,
           clusterThreshold: 10,
         },
         nodes: {

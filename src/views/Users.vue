@@ -15,7 +15,7 @@
         />
       </v-col>
       <v-col cols="4" md="2">
-        <v-btn color="primary" :disabled="checkbox">
+        <v-btn color="primary" :disabled="checkbox" @click="refresh">
           搜尋
         </v-btn>
       </v-col>
@@ -27,7 +27,7 @@
     <v-divider class="my-4" />
 
     <v-row>
-      <UserResult :data="userList" />
+      <UserResult :data="data" />
     </v-row>
 
     <br v-for="i in 10" :key="i" />
@@ -37,6 +37,8 @@
 <script>
 import UserResult from '@/components/UserResult'
 import { userList } from '@/data/users'
+import { courses } from '@/data/courses'
+import { ME } from '@/constants'
 
 export default {
   name: 'Users',
@@ -45,9 +47,40 @@ export default {
 
   data: () => ({
     userList,
+    courses,
+    me: ME,
+    data: [],
     searchText: '',
     checkbox: false,
   }),
+
+  watch: {
+    checkbox() {
+      if (!this.checkbox) return
+      const tags = this.userList.find(u => u.id === this.me).tags
+      this.data = this.userList.filter(u => {
+        if (u.id === this.me) return false
+        return tags.some(t => u.tags.includes(t))
+      })
+    },
+  },
+
+  methods: {
+    refresh() {
+      this.data = this.userList.filter(u => {
+        if (u.id === this.me) return false
+        const someCourse = u.courses.some(c => {
+          const someName = this.courses[c].name.includes(this.searchText)
+          const someTag = this.courses[c].tags.includes(this.searchText)
+          const someTeacher = this.courses[c].teacher === this.searchText
+          const someDepartment = this.courses[c].department === this.searchText
+          return someName || someTag || someTeacher || someDepartment
+        })
+        const someDepartment = u.department === this.searchText
+        return someCourse ||someDepartment
+      })
+    },
+  },
 }
 </script>
 
