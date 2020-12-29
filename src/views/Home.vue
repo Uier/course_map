@@ -45,7 +45,7 @@
             class="px-4 py-10 mt-15 mx-3"
             :elevation="hover ? 6 : 2"
             width="500"
-            @click="clickCard({ name: 'user', params: { id: 1 } })"
+            @click="clickCard({ name: 'user', params: { id: myId } })"
           >
             <div class="d-flex justify-center flex-wrap">
               <div class="d-flex justify-center align-center">
@@ -64,8 +64,16 @@
 </template>
 
 <script>
+import { ME } from '@/constants'
+
 export default {
   name: 'Home',
+
+  computed: {
+    myId() {
+      return ME
+    },
+  },
 
   methods: {
     clickCard(route) {

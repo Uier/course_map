@@ -15,6 +15,7 @@
     "vis-network": "^8.5.5",
     "vis-util": "^4.3.4",
     "vue": "^2.6.11",
+    "vue-cookies": "^1.7.4",
     "vue-date-fns": "^2.0.1",
     "vue-router": "^3.4.9",
     "vue-schedule-selector": "^1.0.13",

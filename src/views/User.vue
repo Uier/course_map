@@ -1,7 +1,7 @@
 <template>
   <v-container class="mt-6">
     <v-row v-if="info">
-      <v-col cols="6">
+      <v-col :cols="me ? 6 : 12">
         <v-card outlined height="150">
           <v-card-text class="text--primary">
             <div class="d-flex align-center justify-center">
@@ -23,17 +23,17 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="6">
+      <v-col v-if="me" cols="6">
         <v-card outlined class="pa-2" height="150" style="overflow-y: scroll">
           <v-card-title>
             <v-icon color="secondary" class="mr-2">mdi-heart</v-icon>
             收藏課程
           </v-card-title>
           <v-card-text class="text--primary">
-            <div v-for="c in ['未完成', '的功能', '假資料']" :key="c">
+            <div v-for="{ name, id } in liked" :key="id">
               <ul>
                 <li>
-                  <a>{{ c }}</a>
+                  <router-link target="_blank" :to="{ name: 'course', params: { id } }">{{ name }}</router-link>
                 </li>
               </ul>
             </div>
@@ -65,7 +65,7 @@
             <v-icon>mdi-chevron-right</v-icon>
             隱藏課程資訊
           </v-btn>
-          <CourseInfo :info="courses[`${this.selectedId}`]" />
+          <CourseInfo :info="courses[`${this.selectedId}`]" @get-liked="getLiked" />
         </div>
         <div v-else>
           <v-card outlined>
@@ -74,9 +74,9 @@
               <div v-for="c in coursesValue.filter(c => c.tags.includes(selectedTag))" :key="c.id">
                 <ul>
                   <li>
-                    <router-link :to="{ name: 'course', params: { id: c.id } }">{{
-                      c.name
-                    }}</router-link>
+                    <router-link target="_blank" :to="{ name: 'course', params: { id: c.id } }">
+                      {{ c.name }}
+                    </router-link>
                   </li>
                 </ul>
               </div>
@@ -92,6 +92,7 @@
 import CourseInfo from '@/components/CourseInfo'
 import { users } from '@/data/users'
 import { courses } from '@/data/courses'
+import { ME } from '@/constants'
 
 Object.defineProperty(String.prototype, 'hashCode', {
   value: function() {
@@ -113,6 +114,9 @@ export default {
   components: { CourseInfo },
 
   computed: {
+    me() {
+      return this.$route.params.id === ME
+    },
     info() {
       return this.$route.params.id ? users[`${this.$route.params.id}`] : null
     },
@@ -161,6 +165,7 @@ export default {
 
   data() {
     return {
+      liked: [],
       selectedId: null,
       selectedTag: null,
       courses,
@@ -199,7 +204,15 @@ export default {
     }
   },
 
+  mounted() {
+    this.getLiked()
+  },
+
   methods: {
+    getLiked() {
+      const liked = this.$cookies.get('liked')
+      this.liked = liked ? JSON.parse(liked).map(l => this.courses[l]) : []
+    },
     click(node) {
       if (!node.nodes.length) {
         this.handleCancel()
