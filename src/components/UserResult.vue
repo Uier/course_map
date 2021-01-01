@@ -4,10 +4,9 @@
       v-for="{ id, avatar, user, tags, occurence } in data"
       :key="id"
       cols="12"
-      sm="6"
-      md="4"
-      lg="3"
-      xl="2"
+      md="6"
+      lg="4"
+      xl="3"
     >
       <v-hover v-slot:default="{ hover }">
         <v-card class="pa-4 ma-4" :elevation="hover ? 6 : 2" @click="handleClick(id)">

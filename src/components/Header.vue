@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { ME } from '@/constants'
+
 export default {
   name: 'Header',
 
@@ -41,7 +43,7 @@ export default {
         },
         {
           label: '個人頁面',
-          route: { name: 'user', params: { id: 1 } },
+          route: { name: 'user', params: { id: ME } },
         },
       ]
     },

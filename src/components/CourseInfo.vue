@@ -6,9 +6,9 @@
       <!-- Like Button -->
       <v-btn
         :color="hasLiked ? 'secondary' : 'default'"
-        @click="hasLiked = !hasLiked"
         outlined
         small
+        @click="likeCourse"
       >
         <v-icon small>{{ hasLiked ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
         {{ hasLiked ? '已收藏' : '收藏' }}
@@ -64,8 +64,41 @@ export default {
     },
   },
 
-  data: () => ({
-    hasLiked: false,
-  }),
+  data() {
+    return {
+      hasLiked: false,
+    }
+  },
+
+  mounted() {
+    this.hasLiked = (() => {
+      const liked = JSON.parse(this.$cookies.get('liked'))
+      return liked && liked.includes(this.info.id)
+    })()
+  },
+
+  methods: {
+    likeCourse() {
+      let liked = this.$cookies.get('liked')
+      if (liked) {
+        liked = JSON.parse(liked)
+        if (liked.includes(this.info.id)) {
+          liked = JSON.stringify(liked.filter(l => l !== this.info.id))
+          this.$cookies.set('liked', liked)
+        } else {
+          liked = JSON.stringify([...liked, this.info.id])
+          this.$cookies.set('liked', liked)
+        }
+      } else {
+        liked = JSON.stringify([this.info.id])
+        this.$cookies.set('liked', liked)
+      }
+      this.hasLiked = (() => {
+        const liked = JSON.parse(this.$cookies.get('liked'))
+        return liked && liked.includes(this.info.id)
+      })()
+      this.$emit('get-liked')
+    },
+  }
 }
 </script>

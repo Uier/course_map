@@ -6,6 +6,7 @@
     <v-row>
       <!-- Table -->
       <v-col cols="6">
+        <div class="text-body-2">時間篩選功能未完成 😭</div>
         <ScheduleSelector
           :minTime="minTime"
           :maxTime="maxTime"
