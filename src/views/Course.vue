@@ -36,11 +36,10 @@
           :outlined="!check[index]"
           @click="$set(check, index, !check[index])"
         >
-          <v-icon v-show="check[index]">mdi-check</v-icon>
           {{ tag }}
         </v-btn>
 
-        <!-- <CourseDiscussion :data="info.discussion.posts" /> -->
+        <CourseDiscussion :data="info.discussion || []" :check="check" />
       </v-col>
     </v-row>
   </v-container>
@@ -49,13 +48,13 @@
 <script>
 import CourseInfo from '@/components/CourseInfo'
 import CourseCard from '@/components/CourseCard'
-// import CourseDiscussion from '@/components/CourseDiscussion'
+import CourseDiscussion from '@/components/CourseDiscussion'
 import { courses } from '@/data/courses'
 
 export default {
   name: 'Course',
 
-  components: { CourseInfo, CourseCard },
+  components: { CourseInfo, CourseCard, CourseDiscussion },
 
   computed: {
     info() {
@@ -65,7 +64,7 @@ export default {
 
   data() {
     return {
-      check: [false, false, false, false, false],
+      check: [true, true, true, true, true],
       searchText: '',
     }
   },

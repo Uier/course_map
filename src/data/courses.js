@@ -572,7 +572,18 @@ export const courses = {
     time: "{'1': [], '2': [], '3': [], '4': [], '5': ['7', '8', '9'], '6': []}",
     location: '師大圖書館校區',
     semester: '109-2',
-    description: '<p>本課程將講授 C++ 程式設計，課程進度如下：</p><p>Week 1: Warm-up<br>Week 2: Pointers and References: Review<br>Week 3: Class Design: Review<br>Week 4: Coding Style<br>Week 5: Tomb Sweeping Day (no class)<br>Week 6: Class Design: A Practice<br/>Week 7: Coding Rules<br/>Week 8: Operator Overloading<br/>Week 9-10: Function Pointers, Function Templates, and Algorithms<br/>Week 11: std::string<br/>Week 12-13: Constructors, Destructors, and Assignment<br/>Week 14: Inheritance<br/>Week 15: Team Project<br/>Week 16: Inheritance: Rules<br/>Week 17-18: Team Project: Continued</br></br></br></br></br></p>'
+    description: '<p>本課程將講授 C++ 程式設計，課程進度如下：</p><p>Week 1: Warm-up<br>Week 2: Pointers and References: Review<br>Week 3: Class Design: Review<br>Week 4: Coding Style<br>Week 5: Tomb Sweeping Day (no class)<br>Week 6: Class Design: A Practice<br/>Week 7: Coding Rules<br/>Week 8: Operator Overloading<br/>Week 9-10: Function Pointers, Function Templates, and Algorithms<br/>Week 11: std::string<br/>Week 12-13: Constructors, Destructors, and Assignment<br/>Week 14: Inheritance<br/>Week 15: Team Project<br/>Week 16: Inheritance: Rules<br/>Week 17-18: Team Project: Continued</br></br></br></br></br></p>',
+    discussion: [
+      {
+        id: 1,
+        avatar: ' ',
+        author: '匿名',
+        time: '2020-12-18 13:02',
+        tags: ['評價'],
+        content: '進階程設是蔣老師開的，蔣老師的課程一律都很推薦，課程主要是教C++。STL的用法、class的用法都講的很詳細，每次上完課都覺得獲益良多。有兩次團體作業（包含期末專案），和數個個人作業，都蠻有趣的。總之非常推薦！',
+        replies: [],
+      }
+    ]
   },
   '2898': {
     id: '2898',
