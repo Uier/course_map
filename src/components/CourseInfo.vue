@@ -24,13 +24,8 @@
       </li>
       <!-- <li class="mt-2">評分方式：{{ info.grade }}</li> -->
       <li class="mt-2" v-if="info.name === '進階程式設計'">推薦相關課程：</li>
-      <v-hover v-slot:default="{ hover }">
-        <v-card
-          class="pa-4 ml-4 mt-4"
-          v-if="info.name === '進階程式設計'"
-          :elevation="hover ? 6 : 2"
-          @click="handleClick('2881')"
-        >
+      <v-hover v-slot:default="{ hover }" v-if="info.name === '進階程式設計'">
+        <v-card class="pa-4 ml-4 mt-4" :elevation="hover ? 6 : 2" @click="handleClick(2881)">
           <div class="d-flex">
             <div class="text-body-1">物件導向分析與設計</div>
             <div class="ml-8">
