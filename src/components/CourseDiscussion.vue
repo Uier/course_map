@@ -43,7 +43,6 @@ export default {
 
   computed: {
     newData() {
-      console.log('trigger')
       const c = ['問題', '心得', '評價', '風格', '其他'].filter((cc, index) => this.check[index])
       return this.data.filter(d => d.tags.some(t => c.includes(t)))
     },

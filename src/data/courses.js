@@ -572,7 +572,7 @@ export const courses = {
     time: "{'1': [], '2': [], '3': [], '4': [], '5': ['7', '8', '9'], '6': []}",
     location: '師大圖書館校區',
     semester: '109-2',
-    description: '<p>本課程將講授 C++ 程式設計，課程進度如下：</p><p>Week 1: Warm-up<br>Week 2: Pointers and References: Review<br>Week 3: Class Design: Review<br>Week 4: Coding Style<br>Week 5: Tomb Sweeping Day (no class)<br>Week 6: Class Design: A Practice<br/>Week 7: Coding Rules<br/>Week 8: Operator Overloading<br/>Week 9-10: Function Pointers, Function Templates, and Algorithms<br/>Week 11: std::string<br/>Week 12-13: Constructors, Destructors, and Assignment<br/>Week 14: Inheritance<br/>Week 15: Team Project<br/>Week 16: Inheritance: Rules<br/>Week 17-18: Team Project: Continued</br></br></br></br></br></p>',
+    description: '<p>本課程將講授 C++ 程式設計，課程進度如下：</p><p>Week 1: Warm-up<br>Week 2: Pointers and References: Review<br>Week 3: Class Design: Review<br>Week 4: Coding Style<br>Week 5: Tomb Sweeping Day (no class)<br>Week 6: Class Design: A Practice<br/>Week 7: Coding Rules<br/>Week 8: Operator Overloading<br/>Week 9-10: Function Pointers, Function Templates, and Algorithms<br/>Week 11: std::string<br/>Week 12-13: Constructors, Destructors, and Assignment<br/>Week 14: Inheritance<br/>Week 15: Team Project<br/>Week 16: Inheritance: Rules<br/>Week 17-18: Team Project: Continued</p>',
     discussion: [
       {
         id: 1,
@@ -583,7 +583,7 @@ export const courses = {
         content: '進階程設是蔣老師開的，蔣老師的課程一律都很推薦，課程主要是教C++。STL的用法、class的用法都講的很詳細，每次上完課都覺得獲益良多。有兩次團體作業（包含期末專案），和數個個人作業，都蠻有趣的。總之非常推薦！',
         replies: [],
       }
-    ]
+    ],
   },
   '2898': {
     id: '2898',
@@ -2821,7 +2821,19 @@ export const courses = {
     location: '臺大總區',
     semester: '107-2',
     description: '<p>1週：運算思維概論與探索</p><ul><li>以不插電的分組活動（桌遊），認識運算思維</li></ul><p>2-6週：目標導向程式設計</p><ul><li>視覺化程式工具 (Block) 與程式設計初探</li><li>視覺化程式設計進行目標導向問題解決</li></ul><p>7週：期中考</p><p>8-11週：問題導向程式設計</p><ul><li>運算思維實踐於視覺化程式設計</li><li>視覺化程式設計進行問題解決</li></ul><p>12週：期末考</p><p>13-16週：互動多媒體專題製作</p><ul><li>互動多媒體專題製作工具簡介</li><li>專題腳本與程式實作</li><li>專題報告與互評</li></ul><p>17-18週：自我程式能力強化練習</p>'
-  }
+  },
+  '2881': {
+    id: '2881',
+    department: '資工系',
+    tags: [ '物件導向', '程式設計'],
+    name: '物件導向分析與設計',
+    credit: 3,
+    teacher: '林均翰',
+    time: "{'1': ['2', '3', '4'], '2': [], '3': [], '4': [], '5': []}",
+    location: '師大分部',
+    semester: '108-2',
+    description: '<p>下列為暫定教學主題，進度視課程情況調整。本課程亦包含共兩周之專題相關活動，由專題提案到展示為止。</p><p>&nbsp;</p><p>Part 1 - An Introduction to Object-Oriented Software Development</p><p>The Object-Oriented Paradigm</p><p>The UML - The Unified Modeling Language</p><p>&nbsp;</p><p>Part 2 - The Limitations of Traditional Object-Oriented Design</p><p>A Problem That Cries Out for Flexible Code</p><p>A Standard Object-Oriented Solution</p><p>&nbsp;</p><p>Part 3 - Design Patterns</p><p>An Introduction to Design Patterns</p><p>The Facade Pattern</p><p>The Adapter Pattern</p><p>Expanding Our Horizons</p><p>The Strategy Pattern</p><p>The Bridge Pattern</p><p>The Abstract Factory Pattern</p><p>&nbsp;</p><p>Part 4 - Putting It All Together - Thinking In Patterns</p><p>How Do Experts Design?</p><p>Solving the CAD/CAM Problem with Patterns</p><p>&nbsp;</p><p>Part 5 - Toward a New Paradigm of Design</p><p>The Principles and Strategies of Design Patterns</p><p>Commonality and Variability Analysis</p><p>The Analysis Matrix</p><p>The Decorator Pattern</p><p>&nbsp;</p><p>Part 6 - Other Values Of Patterns</p><p>The Observer Pattern</p><p>The Template Method Pattern</p><p>&nbsp;</p><p>Part 7 - Factories</p><p>Lessons from Design Patterns - Factories</p><p>The Singleton Pattern and the Double-Checked Locking Pattern</p><p>The Object Pool Pattern</p><p>The Factory Method Pattern</p><p>Summary of Factories</p><p>&nbsp;</p><p>Part 8 - Endings and Beginnings</p><p>Design Patterns Reviewed - A Summation and a Beginning</p>',
+  },
 }
 
 export const courseList = Object.values(courses)
