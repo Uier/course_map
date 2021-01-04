@@ -35,6 +35,11 @@ const routes = [
     name: 'fix',
     component: () => import('@/views/Fix'),
   },
+  {
+    path: '/fix/users',
+    name: 'fixUsers',
+    component: () => import('@/views/UsersFix'),
+  },
 ]
 
 const router = new VueRouter({
