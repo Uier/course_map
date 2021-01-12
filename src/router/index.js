@@ -31,15 +31,20 @@ const routes = [
     component: () => import('@/views/User'),
   },
   {
-    path: '/fix',
-    name: 'fix',
+    path: '/v2/tag',
+    name: 'v2fix',
     component: () => import('@/views/Fix'),
   },
   {
-    path: '/fix/users',
-    name: 'fixUsers',
+    path: '/v2/users',
+    name: 'v2fixUsers',
     component: () => import('@/views/UsersFix'),
   },
+  {
+    path: '/v3/users',
+    name: 'v3fixUsers',
+    component: () => import('@/views/UsersFix3'),
+  }
 ]
 
 const router = new VueRouter({
